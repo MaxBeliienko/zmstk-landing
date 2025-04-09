@@ -32,22 +32,20 @@ const About = () => {
   return (
     <section
       ref={sectionRef}
-      className={`py-16 mx-auto px-4 bg-amber-600 opacity-0 transition-all duration-1000 ${styles["about-section"]}`}
+      className={`py-16 mx-auto px-4 bg-sky-900 opacity-0 text-white transition-all duration-1000 ${styles["about-section"]}`}
       id="about"
     >
       <h2 className="text-3xl font-semibold text-center mb-6">
-        Про нашу автошколу
+        Автошкола Знам’янського МСТК ТСО України
       </h2>
       <div className="max-w-3xl mx-auto text-center">
         <p className="text-lg mb-4">
-          Ми готуємо водіїв понад 10 років. Наші інструктори — професіонали
-          своєї справи. Під час навчання ми забезпечуємо індивідуальний підхід
-          до кожного учня і створюємо комфортну атмосферу для навчання.
+          Навчаємо не просто кермувати, а готуємо впевнених і відповідальних
+          водіїв, готових до будь-яких ситуацій на дорозі.
         </p>
         <p className="text-lg">
-          Наша автошкола має сучасний автопарк і використовує найновіші методики
-          викладання. Ми пропонуємо як теоретичні, так і практичні заняття на
-          всіх етапах навчання.
+          Сучасні методики, досвідчені інструктори та індивідуальний підхід —
+          усе для вашої безпеки, впевненості та комфорту.
         </p>
       </div>
     </section>

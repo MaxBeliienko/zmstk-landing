@@ -35,6 +35,7 @@ const InstallmentSection = () => {
     <section
       ref={sectionRef}
       className={`py-16 container mx-auto px-4 text-center ${styles["installment-section"]}`}
+      id="installments"
     >
       <h2 className="text-3xl font-semibold mb-4">Оплата частинами</h2>
       <p className="mb-6 text-lg">

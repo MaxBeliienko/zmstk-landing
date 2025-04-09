@@ -5,3 +5,18 @@
 /* #f6cb1d - жовтий світлий */
 /* #f7a400 - жовтий темний */
 /* #b6510b - коричневий */
+
+body {
+  font-family: "Kanit", sans-serif;
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

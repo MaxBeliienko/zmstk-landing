@@ -24,7 +24,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-16 container mx-auto px-4">
+    <section className="py-16 container mx-auto px-4" id="contact">
       <h2 className="text-3xl font-semibold mb-6">Зв'яжіться з нами</h2>
 
       {submitted ? (
@@ -72,8 +72,8 @@ const ContactSection = () => {
         <p>м. Знам'янка, вул. Київська, 23</p>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1354.7715146070134!2d32.68624159274296!3d48.716799374594466!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d08d412b26ca47%3A0x76df939202ed45cd!2z0JDQstGC0L7RiNC60L7Qu9CwINCX0JzQodCi0Jog0KLQodCe0KM!5e0!3m2!1suk!2sua!4v1743929848485!5m2!1suk!2sua"
-          width="400"
-          height="300"
+          width="300"
+          height="250"
           style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"

@@ -6,7 +6,6 @@ import styles from "./Header.module.css";
 
 const navLinks = [
   { label: "Про нас", href: "#about" },
-  { label: "Ціни", href: "#pricing" },
   { label: "Оплата частинами", href: "#installments" },
   { label: "Відгуки", href: "#reviews" },
   { label: "Контакти", href: "#contact" },
@@ -39,12 +38,12 @@ export default function Header() {
     <>
       <header
         className={clsx(
-          "fixed top-0 left-0 w-full z-50 bg-[#0274ba] text-white shadow transition-transform duration-300 flex max-w-[375px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1440px] justify-between items-center px-1 py-1 md:py-6",
+          "fixed top-0 left-0 w-full z-50 bg-[#1f2d6e] text-white shadow transition-transform duration-300 flex max-w-[375px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-full justify-between items-center px-5 py-1 md:py-4 lg:py-2",
           scrollDir === "down" ? "-translate-y-full" : "translate-y-0"
         )}
       >
-        <a href="/">
-          <img src={logo} alt="" className={styles.logo} />
+        <a href="#home">
+          <img src={logo} alt="logo" className={styles.logo} />
         </a>
 
         {/* Навігація для великих екранів */}
@@ -76,8 +75,13 @@ export default function Header() {
           </div>
 
           <div className="flex flex-col gap-8 text-2xl items-start">
-            <a href="/">
-              <img src={logo} alt="" className={styles.logo} />
+            <a href="#home">
+              <img
+                src={logo}
+                alt=""
+                className={styles.logo}
+                onClick={() => setIsOpen(false)}
+              />
             </a>
             {navLinks.map((link) => (
               <a

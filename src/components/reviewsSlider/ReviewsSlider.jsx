@@ -40,7 +40,7 @@ const reviews = [
 
 const ReviewsSlider = () => {
   return (
-    <section className="py-16 bg-gray-100 container mx-auto px-4">
+    <section className="py-16 bg-gray-100 container mx-auto px-4" id="reviews">
       <h2 className="text-3xl font-semibold mb-6 text-center">
         Відгуки наших учнів
       </h2>

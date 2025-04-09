@@ -1,25 +1,39 @@
 import styles from "./Hero.module.css";
+import star from "../../assets/star-icon.png";
 
 const Hero = () => {
   return (
     <section
-      className={`h-screen  py-16 bg-cover bg-center text-center relative flex flex-col items-center justify-center ${styles["hero-section"]}`}
+      className={`h-screen  pt-52 bg-cover bg-center text-center relative flex flex-col items-center ${styles["hero-section"]}`}
+      id="home"
     >
       {/* Затемнення */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80 backdrop-blur-xs"></div>
 
-      <div className="relative z-10">
-        <h1 className="text-4xl font-bold text-white mb-4">
-          Навчання водінню з професіоналами
+      <div className="relative z-10 flex flex-col items-start">
+        <h1
+          className={`text-5xl font-bold text-white mb-1 ${styles["main-title"]}`}
+        >
+          АВТОШКОЛА
         </h1>
-        <p className="text-lg text-white mb-6">
-          Отримайте водійські права з нашою підтримкою!
+        <p className="text-base text-white mb-10">
+          Знам'янського МСТК ТСО України
         </p>
+        <div className="mx-auto">
+          <p className={`text-white mb-1 ${styles["hero-list-title"]}`}>
+            Вчимо кермувати:
+          </p>
+          <ul className={`text-white mb-10  ${styles["hero-list"]}`}>
+            <li>безпечно</li>
+            <li>впевнено</li>
+            <li>із задоволенням</li>
+          </ul>
+        </div>
 
         {/* Якірне посилання на секцію з формою */}
         <a
-          href="#form"
-          className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+          href="#contact"
+          className="inline-block px-6 py-3 bg-[#1f2d6e] text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 text-base mx-auto"
         >
           Записатися на навчання
         </a>
