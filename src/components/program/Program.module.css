@@ -1,29 +1,98 @@
-/* Стилі для анімації */
-.program-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-up {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Стилі для зображень */
-.program-image {
-  width: 50px; /* Встановіть бажаний розмір */
-  height: 50px;
-  object-fit: cover;
-  margin-right: 15px;
-  vertical-align: middle;
-}
-
-ul {
-  list-style-type: none;
-}
-
-li {
+.program-list {
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.program-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #0274ba;
+  color: white;
+}
+
+.program-item-header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.program-item-content {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.program-item-content.open {
+  height: auto;
+  padding: 1rem;
+  padding-top: 0;
+}
+
+.opend-list {
+  list-style-type: circle;
+}
+
+/* Для планшетів (ширина екрана >= 768px) */
+@media (min-width: 768px) {
+  .program-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .program-item {
+    width: calc(50% - 2rem); /* Два елементи в ряд, враховуючи відступи */
+    margin-right: 0; /* Забираємо правий margin, оскільки використовуємо space-x */
+    margin-bottom: 0; /* Забираємо нижній margin, оскільки використовуємо space-y */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program-item-content.open {
+    position: static;
+    width: auto;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: auto;
+  }
+}
+
+/* Для десктопів (ширина екрана >= 1024px) */
+@media (min-width: 1024px) {
+  .program-list {
+    position: relative; /* Потрібно для абсолютного позиціонування контенту */
+  }
+
+  .program-item {
+    width: calc(25% - 1.5rem);
+    position: relative; /* Потрібно для абсолютного позиціонування контенту */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program-item-content.open {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #0274ba;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 100%;
+  }
+
+  .program-item-header {
+    position: relative; /* Щоб заголовок був над розгорнутим контентом */
+    z-index: 11;
+  }
 }

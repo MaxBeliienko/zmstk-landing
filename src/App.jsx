@@ -22,7 +22,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="bg-blue-600 text-white p-4 text-center">
-        © 2025 Автошкола Drive. Всі права захищені.
+        © 2025 Автошкола ЗМСТК ТСО України. Всі права захищені.
       </footer>
     </>
   );

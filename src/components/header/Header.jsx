@@ -38,7 +38,7 @@ export default function Header() {
     <>
       <header
         className={clsx(
-          "fixed top-0 left-0 w-full z-50 bg-[#1f2d6e] text-white shadow transition-transform duration-300 flex max-w-[375px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-full justify-between items-center px-5 py-1 md:py-4 lg:py-2",
+          "fixed top-0 left-0 w-full z-50 bg-[#1f2d6e] text-white shadow transition-transform duration-300 flex justify-between items-center px-5 py-1 md:py-4 lg:py-2",
           scrollDir === "down" ? "-translate-y-full" : "translate-y-0"
         )}
       >

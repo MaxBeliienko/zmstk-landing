@@ -1,11 +1,15 @@
+import styles from "./installmentSection/InstallmentSection.module.css";
+
 export default function InstallmentModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded shadow-lg max-w-md w-full">
-        <h3 className="text-xl font-bold mb-4">Увага!</h3>
-        <p className="mb-4">
+    <div className="fixed inset-0 bg-[#0274ba] bg-opacity-50 flex items-center justify-center z-50 text-red-500">
+      <div
+        className={`bg-white p-6 rounded shadow-lg max-w-md w-full ${styles["modal-block"]}`}
+      >
+        <h3 className="text-4xl font-bold mb-4">Увага!</h3>
+        <p className="mb-4 text-2xl">
           Перед оформленням Оплати частинами обов’язково зв’яжіться з
           адміністратором автошколи для уникнення непорозумінь.
         </p>

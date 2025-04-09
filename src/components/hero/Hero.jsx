@@ -23,7 +23,7 @@ const Hero = () => {
           <p className={`text-white mb-1 ${styles["hero-list-title"]}`}>
             Вчимо кермувати:
           </p>
-          <ul className={`text-white mb-10  ${styles["hero-list"]}`}>
+          <ul className={`text-white mb-10 text-start  ${styles["hero-list"]}`}>
             <li>безпечно</li>
             <li>впевнено</li>
             <li>із задоволенням</li>
