@@ -1,0 +1,29 @@
+/* Стилі для анімації */
+.program-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Стилі для зображень */
+.program-image {
+  width: 50px; /* Встановіть бажаний розмір */
+  height: 50px;
+  object-fit: cover;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}

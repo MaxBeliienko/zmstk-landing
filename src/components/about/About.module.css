@@ -1,0 +1,13 @@
+.fade-up {
+  opacity: 1 !important;
+  transform: translateY(
+    0
+  ) !important; /* Переміщаємо елемент в його початкову позицію */
+}
+
+.about-section {
+  opacity: 0; /* Початкова непрозорість */
+  transform: translateY(50px); /* Початкове положення */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Плавне зміщення та прозорість */
+  z-index: 10;
+}

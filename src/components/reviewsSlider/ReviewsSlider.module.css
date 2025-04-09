@@ -1,0 +1,32 @@
+.review-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.car-animation {
+  position: relative;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+.car {
+  position: absolute;
+  width: 100px;
+  height: 80px;
+  background-color: transparent;
+  animation: car-animation 5s linear infinite;
+}
+
+/* Анімація для машини */
+@keyframes car-animation {
+  0% {
+    left: -340px;
+  }
+  100% {
+    left: 90%;
+  }
+}
