@@ -1,4 +1,4 @@
-import CategoriesList from "../components/categoriesList/categoriesList";
+import CategoriesList from "../components/categoriesList/CategoriesList";
 
 const Categories = () => {
   return (
