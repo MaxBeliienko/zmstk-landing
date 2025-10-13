@@ -3,12 +3,13 @@ import { Menu, X } from "lucide-react";
 import clsx from "clsx";
 import logo from "../../assets/logo.png";
 import styles from "./Header.module.css";
+import { NavLink } from "react-router-dom";
 
 const navLinks = [
-  { label: "Про нас", href: "#about" },
-  { label: "Оплата частинами", href: "#installments" },
-  { label: "Відгуки", href: "#reviews" },
-  { label: "Контакти", href: "#contact" },
+  { label: "Про нас", href: "/#about" },
+  { label: "Категорії", href: "/categories" },
+  { label: "Відгуки", href: "/#reviews" },
+  { label: "Контакти", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -42,16 +43,16 @@ export default function Header() {
           scrollDir === "down" ? "-translate-y-full" : "translate-y-0"
         )}
       >
-        <a href="#home">
+        <NavLink to="/">
           <img src={logo} alt="logo" className={styles.logo} />
-        </a>
+        </NavLink>
 
         {/* Навігація для великих екранів */}
         <nav className="hidden md:flex space-x-6 text-lg">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="hover:underline">
+            <NavLink key={link.href} to={link.href} className="hover:underline">
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -75,23 +76,23 @@ export default function Header() {
           </div>
 
           <div className="flex flex-col gap-8 text-2xl items-start">
-            <a href="#home">
+            <NavLink to="/">
               <img
                 src={logo}
                 alt=""
                 className={styles.logo}
                 onClick={() => setIsOpen(false)}
               />
-            </a>
+            </NavLink>
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 onClick={() => setIsOpen(false)}
                 className="hover:underline"
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>

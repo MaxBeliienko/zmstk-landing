@@ -1,23 +1,17 @@
-import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
-import Hero from "./components/hero/Hero";
-import About from "./components/about/About";
-import Program from "./components/program/Program";
-import InstallmentSection from "./components/installmentSection/InstallmentSection";
-import ReviewsSlider from "./components/reviewsSlider/ReviewsSlider";
-import ContactSection from "./components/contactSection/ContactSection";
+import HomePage from "./pages/HomePage";
+import Categories from "./pages/Categories";
 
 export default function App() {
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <About />
-        <Program />
-        <InstallmentSection />
-        <ReviewsSlider />
-        <ContactSection />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/categories" element={<Categories />} />
+        </Routes>
       </main>
 
       {/* Footer */}

@@ -1,5 +1,4 @@
 import styles from "./Hero.module.css";
-import star from "../../assets/star-icon.png";
 
 const Hero = () => {
   return (
