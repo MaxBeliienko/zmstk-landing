@@ -69,12 +69,12 @@
 /* Для десктопів (ширина екрана >= 1024px) */
 @media (min-width: 1024px) {
   .program-list {
-    position: relative; /* Потрібно для абсолютного позиціонування контенту */
+    position: relative;
   }
 
   .program-item {
     width: calc(25% - 1.5rem);
-    position: relative; /* Потрібно для абсолютного позиціонування контенту */
+    position: relative;
     display: flex;
     flex-direction: column;
   }

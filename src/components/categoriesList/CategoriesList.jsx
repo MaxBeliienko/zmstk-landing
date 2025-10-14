@@ -5,7 +5,10 @@ const CategoriesList = () => {
         Автошкола Знам’янського МСТК ТСО України
       </h1>
       <ul className="flex flex-wrap gap-6 justify-center">
-        <li className="border-2 border-dashed border-sky-700 p-4 rounded-xl flex gap-2 w-[300px]">
+        <li
+          id="a-categor-page"
+          className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]"
+        >
           <div className="flex flex-col gap-2 justify-between">
             <h2 className="text-xl font-bold">КАТЕГОРІЯ «А»</h2>
             <p>
@@ -33,7 +36,10 @@ const CategoriesList = () => {
           </div>
         </li>
 
-        <li className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]">
+        <li
+          id="b-categor-page"
+          className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]"
+        >
           <div className="flex flex-col gap-2 justify-between">
             <h2 className="text-xl font-bold">КАТЕГОРІЯ «В»</h2>
             <p>
@@ -48,7 +54,10 @@ const CategoriesList = () => {
           </div>
         </li>
 
-        <li className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]">
+        <li
+          id="c-categor-page"
+          className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]"
+        >
           <div className="flex flex-col gap-2 justify-between">
             <h2 className="text-xl font-bold">КАТЕГОРІЯ «С»</h2>
             <p>
@@ -63,7 +72,10 @@ const CategoriesList = () => {
           </div>
         </li>
 
-        <li className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]">
+        <li
+          id="d-categor-page"
+          className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]"
+        >
           <div className="flex flex-col gap-2 justify-between">
             <h2 className="text-xl font-bold">
               КАТЕГОРІЯ «<span className="text-[24px]">D</span>»
@@ -79,7 +91,10 @@ const CategoriesList = () => {
           </div>
         </li>
 
-        <li className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]">
+        <li
+          id="ce-categor-page"
+          className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]"
+        >
           <div className="flex flex-col gap-2 justify-between">
             <h2 className="text-xl font-bold">КАТЕГОРІЯ «СЕ»</h2>
             <p>
@@ -96,7 +111,10 @@ const CategoriesList = () => {
           </div>
         </li>
 
-        <li className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]">
+        <li
+          id="dopidgotovka"
+          className="border-2 border-dashed border-sky-700 p-6 rounded-xl flex gap-2 w-[300px]"
+        >
           <div className="flex flex-col gap-2">
             <h2 className="text-xl font-bold">Відновлення навичок</h2>
             <p>

@@ -2,11 +2,13 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import HomePage from "./pages/HomePage";
 import Categories from "./pages/Categories";
+import ScrollToSection from "./utils/ScrollToSection";
 
 export default function App() {
   return (
     <>
       <Header />
+      <ScrollToSection />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />

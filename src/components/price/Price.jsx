@@ -35,7 +35,7 @@ const Price = () => {
           {/* 6. Посилання "ДЕТАЛЬНІШЕ" */}
           <div className="absolute bottom-2 left-6 z-10 flex items-center mt-8 w-full">
             <NavLink
-              to="/categories"
+              to="/categories#a-categor-page"
               className="text-lg font-bold uppercase text-white"
             >
               ДЕТАЛЬНІШЕ
@@ -65,7 +65,7 @@ const Price = () => {
           {/* 6. Посилання "ДЕТАЛЬНІШЕ" */}
           <div className="absolute bottom-2 left-6 z-10 flex items-center mt-8 w-full">
             <NavLink
-              to="/categories"
+              to="/categories#b-categor-page"
               className="text-lg font-bold uppercase text-white"
             >
               ДЕТАЛЬНІШЕ
@@ -95,7 +95,7 @@ const Price = () => {
           {/* 6. Посилання "ДЕТАЛЬНІШЕ" */}
           <div className="absolute bottom-2 left-6 z-10 flex items-center mt-8 w-full">
             <NavLink
-              to="/categories"
+              to="/categories#c-categor-page"
               className="text-lg font-bold uppercase text-white"
             >
               ДЕТАЛЬНІШЕ
@@ -127,7 +127,7 @@ const Price = () => {
           {/* 6. Посилання "ДЕТАЛЬНІШЕ" */}
           <div className="absolute bottom-2 left-6 z-10 flex items-center mt-8 w-full">
             <NavLink
-              to="/categories"
+              to="/categories#d-categor-page"
               className="text-lg font-bold uppercase text-white"
             >
               ДЕТАЛЬНІШЕ
@@ -157,7 +157,7 @@ const Price = () => {
           {/* 6. Посилання "ДЕТАЛЬНІШЕ" */}
           <div className="absolute bottom-2 left-6 z-10 flex items-center mt-8 w-full">
             <NavLink
-              to="/categories"
+              to="/categories#ce-categor-page"
               className="text-lg font-bold uppercase text-white"
             >
               ДЕТАЛЬНІШЕ
@@ -188,7 +188,7 @@ const Price = () => {
           {/* 6. Посилання "ДЕТАЛЬНІШЕ" */}
           <div className="absolute bottom-2 left-6 z-10 flex items-center mt-8 w-full">
             <NavLink
-              to="/categories"
+              to="/categories#dopidgotovka"
               className="text-lg font-bold uppercase text-white"
             >
               ДЕТАЛЬНІШЕ

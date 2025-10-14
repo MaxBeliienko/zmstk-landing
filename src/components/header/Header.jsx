@@ -16,16 +16,16 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollDir, setScrollDir] = useState("up");
 
-  // Блокуємо скрол при відкритому меню
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  // Сховання хедера при скролі вниз
   useEffect(() => {
     let lastScrollY = window.scrollY;
 
     const updateScrollDir = () => {
+      if (isOpen) return;
+
       const currentScrollY = window.scrollY;
       setScrollDir(currentScrollY > lastScrollY ? "down" : "up");
       lastScrollY = currentScrollY;
@@ -33,21 +33,24 @@ export default function Header() {
 
     window.addEventListener("scroll", updateScrollDir);
     return () => window.removeEventListener("scroll", updateScrollDir);
-  }, []);
+  }, [isOpen]);
+
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <>
       <header
         className={clsx(
           "fixed top-0 left-0 w-full z-50 bg-[#1f2d6e] text-white shadow transition-transform duration-300 flex justify-between items-center px-5 py-1 md:py-4 lg:py-2",
-          scrollDir === "down" ? "-translate-y-full" : "translate-y-0"
+          scrollDir === "down" && !isOpen
+            ? "-translate-y-full"
+            : "translate-y-0"
         )}
       >
-        <NavLink to="/">
+        <NavLink to="/" onClick={closeMenu}>
           <img src={logo} alt="logo" className={styles.logo} />
         </NavLink>
 
-        {/* Навігація для великих екранів */}
         <nav className="hidden md:flex space-x-6 text-lg">
           {navLinks.map((link) => (
             <NavLink key={link.href} to={link.href} className="hover:underline">
@@ -56,7 +59,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Кнопка бургер-меню */}
         <button
           onClick={() => setIsOpen(true)}
           className="md:hidden"
@@ -66,37 +68,45 @@ export default function Header() {
         </button>
       </header>
 
-      {/* FULLSCREEN МЕНЮ */}
-      {isOpen && (
-        <div className="fixed top-0 left-0 h-full w-screen z-50 bg-black text-white flex flex-col px-6 py-12 transition-all duration-300">
-          <div className="flex justify-end mb-8">
-            <button onClick={() => setIsOpen(false)} aria-label="Закрити меню">
-              <X size={32} />
-            </button>
-          </div>
+      <div
+        className={clsx(
+          "fixed top-0 right-0 h-full w-64 md:w-80 z-[60] bg-black text-white flex flex-col transition-transform duration-500 ease-in-out shadow-xl",
 
-          <div className="flex flex-col gap-8 text-2xl items-start">
-            <NavLink to="/">
-              <img
-                src={logo}
-                alt=""
-                className={styles.logo}
-                onClick={() => setIsOpen(false)}
-              />
-            </NavLink>
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.href}
-                to={link.href}
-                onClick={() => setIsOpen(false)}
-                className="hover:underline"
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </div>
+          isOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="flex justify-end p-6">
+          <button onClick={closeMenu} aria-label="Закрити меню">
+            <X size={32} />
+          </button>
         </div>
-      )}
+
+        <div className="flex flex-col gap-6 text-xl items-start p-6 pt-0">
+          <NavLink to="/" onClick={closeMenu}>
+            <img src={logo} alt="logo" className={styles.logo} />
+          </NavLink>
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.href}
+              to={link.href}
+              onClick={closeMenu}
+              className="hover:underline"
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      <div
+        className={clsx(
+          "fixed inset-0 bg-black transition-opacity duration-300 z-[55] md:hidden",
+          isOpen
+            ? "opacity-50 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        )}
+        onClick={closeMenu}
+      />
     </>
   );
 }
