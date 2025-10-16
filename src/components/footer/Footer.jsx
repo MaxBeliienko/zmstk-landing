@@ -20,7 +20,7 @@ const Footer = () => {
             {link.label}
           </NavLink>
         ))}
-        <a href="../../../public/DogovirOferty.pdf" target="_blank">
+        <a href="/DogovirOferty.pdf" target="_blank" rel="noopener noreferrer">
           Договір публічної оферти
         </a>
       </nav>
