@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import HomePage from "./pages/HomePage";
 import Categories from "./pages/Categories";
 import ScrollToSection from "./utils/ScrollToSection";
+import Footer from "./components/footer/Footer";
 
 export default function App() {
   return (
@@ -17,9 +18,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-blue-600 text-white p-4 text-center">
-        © 2025 Автошкола ЗМСТК ТСО України. Всі права захищені.
-      </footer>
+      <Footer />
     </>
   );
 }
