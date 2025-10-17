@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 const navLinks = [
-  { label: "Про нас", href: "/#about" },
   { label: "Категорії", href: "/categories" },
   { label: "Відгуки", href: "/#reviews" },
   { label: "Контакти", href: "/#contact" },
+  { label: "Повернення коштів", href: "/return" },
 ];
 
 const Footer = () => {
