@@ -231,7 +231,7 @@ export default function UserForm() {
                   handleChange({ target: { name: "accessDays", value: "" } })
                 }
                 // Позиціонуємо хрестик лівіше від напису "днів доступу"
-                className="absolute inset-y-0 right-24 md:bottom-2 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                className="absolute inset-y-0 right-24 md:bottom-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
               >
                 <X size={14} strokeWidth={2.5} />
               </button>
