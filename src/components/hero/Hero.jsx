@@ -81,7 +81,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative w-full min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-gray-950 text-white"
+      className="relative w-full min-h-screen flex items-center justify-center pt-2 overflow-hidden bg-gray-950 text-white"
       id="home"
     >
       <video
@@ -116,9 +116,9 @@ export default function Hero() {
             </h1>
             <p
               ref={subtitleRef}
-              className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-400 tracking-tight leading-tight"
+              className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-400 tracking-tight leading-tight flex flex-col xl:flex-row xl:gap-2"
             >
-              Знам'янського МСТК ТСО України
+              Знам'янського МСТК <span>ТСО України</span>
             </p>
           </div>
 
@@ -166,14 +166,6 @@ export default function Hero() {
                 className="group-hover:translate-x-1 transition-transform"
               />
             </a>
-
-            <Link
-              to={dashboardPath}
-              className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white text-white hover:text-gray-950 font-black rounded-xl border border-white/10 hover:border-white transition-all text-xs uppercase tracking-widest cursor-pointer backdrop-blur-md shadow-xs"
-            >
-              <User size={14} />
-              {user ? "Мій Кабінет" : "Особистий кабінет"}
-            </Link>
           </div>
         </div>
 
