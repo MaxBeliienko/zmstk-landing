@@ -21,7 +21,7 @@ export default function TestRunPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const user = useSelector(selectUser);
-
+  const userName = user?.name ? user.name.split("(")[0].trim() : "Користувач";
   const mode = searchParams.get("mode");
   const topicId = searchParams.get("id")
     ? decodeURIComponent(searchParams.get("id"))
@@ -120,7 +120,6 @@ export default function TestRunPage() {
     setTimeout(() => {
       setIsPendingNext(false);
 
-      // Якщо це основний іспит — вилітаємо після 3 помилок
       if (mode === "exam" && !isMistakesMode && totalErrors > 2) {
         finishTest(updatedAnswers);
         return;
@@ -163,8 +162,6 @@ export default function TestRunPage() {
     clearInterval(timerRef.current);
     clearInterval(totalTimeRef.current);
     setIsFinished(true);
-
-    // ЗАХИСТ СТАТИСТИКИ: Робота над помилками ніколи не пише в базу
     if (isMistakesMode) {
       return;
     }
@@ -194,9 +191,7 @@ export default function TestRunPage() {
     );
   };
 
-  // 🌟 ОНОВЛЕНО: Функція підтримує нескінченні кола повторень
   const handleMistakesReview = () => {
-    // Шукаємо помилки суто серед поточного пулу питань (`questions`), на які користувач щойно відповів
     const incorrectIds = questions
       .filter((q) => userAnswers[q._id] && !userAnswers[q._id]?.isCorrect)
       .map((q) => q._id);
@@ -209,8 +204,6 @@ export default function TestRunPage() {
     setCurrentIdx(0);
     setTimeSpent(0);
     setIsFinished(false);
-
-    // Завантажуємо лише новий відфільтрований список невдалих питань
     dispatch(fetchQuestionsByIds(incorrectIds));
   };
 
@@ -233,14 +226,12 @@ export default function TestRunPage() {
 
     return (
       <TestResultsContent
-        // Прокидаємо режим, щоб на екрані фінішу була правильна логіка
         mode={isMistakesMode ? "mistakes_review" : mode}
         topicId={topicId}
         totalCorrect={totalCorrect}
         totalQuestions={questions.length}
         timeSpent={timeSpent}
         actualMistakesCount={totalMistakes}
-        // 🌟 ОНОВЛЕНО: Кнопка "Робота над помилками" доступна ЗАВЖДИ, якщо в цій сесії знову є помилки
         onMistakesReview={totalMistakes > 0 ? handleMistakesReview : null}
         onReturn={() => navigate("/test")}
       />
@@ -250,7 +241,6 @@ export default function TestRunPage() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white pt-24 pb-12 flex flex-col justify-between transition-colors duration-500">
       <div className="w-full max-w-4xl mx-auto px-4 space-y-5">
-        {/* Хедер тренажера */}
         <div className="flex items-start justify-between gap-4 bg-white dark:bg-gray-800 p-4 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xs">
           <div className="flex items-start gap-3 flex-1 min-w-0">
             <button
@@ -278,11 +268,11 @@ export default function TestRunPage() {
                   : "Вивчення Теми"}
               </span>
 
-              <h2 className="text-sm md:text-base font-bold whitespace-normal break-words mt-0.5 text-gray-900 dark:text-white">
+              <h2 className="text-sm md:text-lg font-bold whitespace-normal break-words mt-1 text-gray-900 dark:text-white">
                 {isMistakesMode
                   ? "Повторне опрацювання проблемних питань сесії"
                   : mode === "exam"
-                  ? "Випадковий квиток ГСЦ МВС"
+                  ? `${userName}`
                   : questions[currentIdx]?.topic || topicId}
               </h2>
 
@@ -335,6 +325,7 @@ export default function TestRunPage() {
               totalQuestions={questions.length}
               savedAnswer={userAnswers[currentQuestion?._id]}
               currentQuestionObject={currentQuestion}
+              mode={mode}
             />
           </div>
         </div>

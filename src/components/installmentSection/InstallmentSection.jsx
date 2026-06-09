@@ -49,9 +49,9 @@ export default function InstallmentSection() {
           </div>
 
           <div className="space-y-2 relative z-10 max-w-xl">
-            <span className="text-[10px] font-black tracking-widest text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-500/10 px-2.5 py-1 rounded-full">
+            {/* <span className="text-[10px] font-black tracking-widest text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-500/10 px-2.5 py-1 rounded-full">
               Без переплат • 0%
-            </span>
+            </span> */}
             <h2 className="mt-2 text-2xl sm:text-3xl font-black tracking-tight uppercase">
               Оплата частинами
             </h2>

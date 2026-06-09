@@ -70,7 +70,7 @@ export default function Program() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center space-y-3">
           <span className="inline-block text-xs font-black tracking-widest text-amber-600 dark:text-amber-400 uppercase bg-amber-500/10 dark:bg-amber-400/10 px-4 py-1.5 rounded-full border border-amber-500/20">
-            Навчальний план
+            Напрямки підготовки
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-black tracking-tight leading-none uppercase">
             Програма навчання

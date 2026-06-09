@@ -78,7 +78,7 @@ export default function ContactSection() {
                   <p className="text-[10px] font-black uppercase tracking-wider text-gray-400">
                     Телефон лінії зв'язку
                   </p>
-                  <p className="text-sm font-extrabold font-mono text-gray-900 dark:text-white group-hover:text-amber-500 transition-colors">
+                  <p className="text-sm font-extrabold text-gray-900 dark:text-white group-hover:text-amber-500 transition-colors">
                     +38 (050) 341 10 49
                   </p>
                 </div>
@@ -105,7 +105,7 @@ export default function ContactSection() {
                 className="flex items-center gap-4 p-4 bg-gray-50 hover:bg-amber-500/5 dark:bg-gray-900/40 border border-gray-100 dark:border-gray-700/60 rounded-2xl transition-all group"
               >
                 <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <MapPin size={18} />
+                  <MapPin size={20} />
                 </div>
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-wider text-gray-400">
@@ -131,8 +131,8 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 order-1 lg:order-2 h-full">
-            <div className="bg-gray-50 border border-gray-200 dark:bg-gray-900/30 dark:border-gray-700/60 p-6 sm:p-10 rounded-3xl shadow-sm h-full flex flex-col justify-center">
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <div className="bg-gray-50 border border-gray-200 dark:bg-gray-900/30 dark:border-gray-700/60 px-6 py-6 sm:p-10 rounded-3xl shadow-sm h-full flex flex-col justify-center">
               {submitted ? (
                 <div className="text-center space-y-4 py-8 animate-fadeIn">
                   <div className="w-14 h-14 bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center mx-auto border border-green-500/20">
@@ -152,12 +152,11 @@ export default function ContactSection() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <h3 className="text-lg font-black uppercase tracking-tight text-gray-900 dark:text-white">
+                    <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-gray-900 dark:text-white">
                       Онлайн запис
                     </h3>
                     <p className="text-xs text-gray-400 mt-0.5 font-medium">
-                      Залиште контакти, і ми забронюємо місце у найближчій
-                      навчальній групі.
+                      Залиште контакти і ми обов'язково Вам зателефонуємо!
                     </p>
                   </div>
 

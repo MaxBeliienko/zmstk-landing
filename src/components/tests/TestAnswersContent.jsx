@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors"; // 🌟 Перевір шлях до твоїх селекторів auth
-import { ChevronRight, Edit3 } from "lucide-react"; // 🌟 Додано Edit3
-import { cleanTopicForUrl } from "../../utils/cleanTopicForUrl";
-import EditQuestionModal from "../modal/EditQuestionModal"; // 🌟 Перевір шлях до файлу модалки
+import { selectUser } from "../../redux/auth/selectors";
+import { ChevronRight, Edit3 } from "lucide-react";
+import EditQuestionModal from "../modal/EditQuestionModal";
 
 export default function TestAnswersContent({
   questionText,
@@ -16,6 +15,7 @@ export default function TestAnswersContent({
   totalQuestions,
   savedAnswer,
   currentQuestionObject,
+  mode,
 }) {
   const isAlreadyAnswered = !!savedAnswer;
   const user = useSelector(selectUser);
@@ -25,14 +25,14 @@ export default function TestAnswersContent({
   return (
     <>
       <div className="w-full bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xs flex flex-col justify-between min-h-[360px] transition-colors">
-        {/* Текст питання */}
         <div className="space-y-3 mb-6">
           <div className="flex items-center gap-2">
-            <div className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-500 dark:text-amber-400 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md">
-              Запитання {currentIdx + 1} з {totalQuestions}
-            </div>
+            {/* {mode !== "exam" && (
+              <div className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-500 dark:text-amber-400 text-[12px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md">
+                Запитання {currentIdx + 1} з {totalQuestions}
+              </div>
+            )} */}
 
-            {/* 🌟 НОВЕ: Іконка редагування для адміна */}
             {isAdmin && (
               <button
                 type="button"
@@ -122,8 +122,6 @@ export default function TestAnswersContent({
           </div>
         </div>
       </div>
-
-      {/* 🌟 НОВЕ: Модалка редагування адміном */}
       {isAdmin && (
         <EditQuestionModal
           isOpen={isEditModalOpen}

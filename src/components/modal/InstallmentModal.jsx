@@ -32,12 +32,11 @@ export default function InstallmentModal({ isOpen, onClose }) {
           </div>
 
           <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed px-2">
-            Перед безпосереднім оформленням послуги{" "}
+            Оформлення послуги{" "}
             <span className="font-bold text-gray-900 dark:text-white">
               «Оплата частинами»
             </span>{" "}
-            обов’язково зв’яжіться з адміністрацією нашої автошколи для фіксації
-            вашої групи та уникнення фінансових непорозумінь.
+            відбувається безпосередньо у навчальному закладі
           </p>
         </div>
 
@@ -51,12 +50,11 @@ export default function InstallmentModal({ isOpen, onClose }) {
           </button>
 
           <a
-            href="https://privatbank.ua/ru/chast/forma"
-            target="_blank"
+            href="tel:+380503411049"
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-black bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl shadow-md shadow-emerald-500/10 hover:shadow-emerald-600/20 transition-all text-center uppercase tracking-wider"
           >
-            Оформити ОЧ
+            Зателефонувати
             <ExternalLink size={12} strokeWidth={2.5} />
           </a>
         </div>

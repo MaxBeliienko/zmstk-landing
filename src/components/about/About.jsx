@@ -71,16 +71,20 @@ export default function About() {
             Про автошколу
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-black tracking-tight leading-tight">
-            Автошкола Знам’янського МСТК ТСО України
+            Автошкола Знам’янського МСТК <br />
+            ТСО України
           </h2>
           <div className="w-12 h-1 bg-amber-500 mx-auto rounded-full mt-2" />
         </div>
 
         <div className="max-w-3xl mx-auto text-center text-base sm:text-lg text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
           <p>
-            Наша команда навчає не просто кермувати. Ми виховуємо нове покоління
-            водіїв — відповідальних, спокійних та готових до будь-яких дорожніх
-            викликів.
+            Наша команда навчає не просто кермувати, а готує впевнених і
+            відповідальних водіїв, готових до будь-яких ситуацій на дорозі.
+          </p>
+          <p className="text-lg">
+            Сучасні методики, досвідчені інструктори та індивідуальний підхід —
+            усе для вашої безпеки, впевненості та комфорту.
           </p>
         </div>
 

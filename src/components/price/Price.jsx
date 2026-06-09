@@ -44,7 +44,7 @@ export default function Price() {
       title: "Категорія А",
       desc: "Курси водіння мотоциклів і скутерів",
       bgSize: "55%",
-      bgPos: "right 10% bottom 10%",
+      bgPos: "right 10% bottom 12%",
     },
     {
       id: "b-categor-page",
@@ -60,15 +60,15 @@ export default function Price() {
       title: "Категорія С",
       desc: "Курси водіння вантажних автомобілів",
       bgSize: "60%",
-      bgPos: "right 5% bottom 5%",
+      bgPos: "right 5% bottom 20%",
     },
     {
       id: "d-categor-page",
       bgImage: dCard,
       title: "Категорія D",
       desc: "Курси водіння автобусів та мікроавтобусів",
-      bgSize: "50%",
-      bgPos: "right 5% bottom 10%",
+      bgSize: "60%",
+      bgPos: "right 5% bottom 35%",
     },
     {
       id: "ce-categor-page",
@@ -76,34 +76,30 @@ export default function Price() {
       title: "Категорія СЕ",
       desc: "Додаткова категорія для важких причепів",
       bgSize: "55%",
-      bgPos: "right 5% bottom 5%",
+      bgPos: "right 5% bottom 30%",
     },
     {
       id: "dopidgotovka",
       bgImage: ruleCard,
-      title: "Відновлення",
-      desc: "Практичне відновлення навичок водіння",
+      title: "Згадати все",
+      desc: "Відновлення практичних навичок водіння",
       bgSize: "40%",
-      bgPos: "right 10% bottom 15%",
+      bgPos: "right 10% bottom 25%",
     },
   ];
 
   return (
     <section
       ref={containerRef}
-      className="py-24 bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="py-16 bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-500 overflow-hidden"
       id="prices"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Хедер секції */}
         <div className="text-center space-y-4">
-          <span className="inline-block text-xs font-black tracking-widest text-amber-600 dark:text-amber-400 uppercase bg-amber-500/10 dark:bg-amber-400/10 px-4 py-1.5 rounded-full border border-amber-500/20">
-            Напрямки підготовки
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight uppercase">
-            Доступні{" "}
+            Категорії{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-400 dark:to-amber-500">
-              Категорії
+              Навчання
             </span>
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-600 mx-auto rounded-full" />
@@ -151,7 +147,7 @@ export default function Price() {
               </div>
 
               {/* Кнопка "Детальніше" */}
-              <div className="relative z-10 pt-4 border-t border-gray-100 dark:border-gray-800/60">
+              <div className="relative z-10 pt-4">
                 <NavLink
                   to={`/categories#${card.id}`}
                   className="inline-flex items-center gap-2 text-xs font-black tracking-widest uppercase text-gray-900 dark:text-gray-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 focus:outline-none"

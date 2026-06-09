@@ -66,7 +66,7 @@ export default function CategoriesList() {
         "Призначена для управління двоколісними ТЗ, у яких обсяг двигуна перевищує 50 см³ або 4 кВт для електромоторів.",
       age: "З 16 років",
       price: "5 500 грн",
-      phone: "+38 (050) 341-10-49", // Вкажіть реальний номер автошколи
+      phone: "+38 (050) 341-10-49",
     },
     {
       id: "a1-categor-page",
@@ -140,10 +140,11 @@ export default function CategoriesList() {
         <span className="inline-block text-xs font-black tracking-widest text-amber-600 dark:text-amber-400 uppercase bg-amber-500/10 dark:bg-amber-400/10 px-4 py-1.5 rounded-full border border-amber-500/20">
           Програми навчання
         </span>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none uppercase">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none uppercase">
           Автошкола{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-400 dark:to-amber-500">
-            ЗМСТК ТСО України
+            Знам'янського МСТК <br />
+            ТСО України
           </span>
         </h1>
         <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed">
@@ -153,11 +154,9 @@ export default function CategoriesList() {
         <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-600 mx-auto rounded-full mt-2" />
       </div>
 
-      {/* СІТКА КАРТОК */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         {categories.map((item, idx) => {
           const IconComponent = item.icon;
-          // Очищаємо номер телефону від зайвих символів для коректного лінку tel:
           const cleanPhone = item.phone
             ? item.phone.replace(/[^+\d]/g, "")
             : "";
@@ -199,9 +198,7 @@ export default function CategoriesList() {
                 )}
               </div>
 
-              {/* Нижня частина */}
               <div className="space-y-4 relative z-10 mt-auto">
-                {/* Вік та Телефонний блок */}
                 <div className="flex flex-col gap-2 pt-2 border-t border-gray-100 dark:border-gray-800/50">
                   {item.age && (
                     <div className="flex items-center gap-2 text-xs font-bold text-gray-400 dark:text-gray-500">
@@ -215,7 +212,6 @@ export default function CategoriesList() {
                     </div>
                   )}
 
-                  {/* 🌟 СТИЛЬНИЙ БЛОК ТЕЛЕФОНУ */}
                   {item.phone && (
                     <a
                       href={`tel:${cleanPhone}`}
@@ -227,7 +223,7 @@ export default function CategoriesList() {
                       />
                       <span>
                         Запис:{" "}
-                        <span className="font-extrabold tracking-wide font-mono text-gray-700 dark:text-gray-300 group-hover/phone:underline">
+                        <span className="font-extrabold tracking-wide text-gray-700 dark:text-gray-300 group-hover/phone:underline">
                           {item.phone}
                         </span>
                       </span>
@@ -235,7 +231,6 @@ export default function CategoriesList() {
                   )}
                 </div>
 
-                {/* Блок ціни або кнопка зворотного зв'язку */}
                 {item.price ? (
                   <div className="flex items-center justify-between p-3.5 bg-gray-50 border border-gray-100 dark:bg-gray-900/50 rounded-xl dark:border-gray-800/80 group-hover:border-amber-500/20 dark:group-hover:border-amber-400/20 transition-all duration-300">
                     <span className="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-wider flex items-center gap-1.5">

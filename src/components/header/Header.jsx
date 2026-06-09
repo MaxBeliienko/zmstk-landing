@@ -14,6 +14,10 @@ export default function Header() {
   const user = useSelector(selectUser);
   const location = useLocation();
 
+  // Визначаємо, чи є поточна сторінка темною спочатку (Головна або Логін)
+  const isDarkPage =
+    location.pathname === "/" || location.pathname === "/login";
+
   const getDashboardPath = () => {
     if (!user) return "/login";
     switch (user.role) {
@@ -65,26 +69,33 @@ export default function Header() {
     return location.pathname === path;
   };
 
-  // 🌟 ОНОВЛЕНО: Стабільні класи для посилань (завжди чіткі у світлій та темній темах)
   const getLinkClass = (path, hash = "") => {
     const active = isLinkActive(path, hash);
+
+    // Якщо ми на темній сторінці й вгорі — текст світлий. Інакше — стандартний темний/адаптивний.
+    const defaultTextColor =
+      isDarkPage && isTop
+        ? "text-white/90 hover:text-amber-400"
+        : "text-gray-700 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400";
+
     return clsx(
       "relative py-1 font-black text-xs uppercase tracking-wider transition-colors cursor-pointer text-nowrap",
-      active
-        ? "text-amber-500"
-        : "text-gray-700 hover:text-amber-500 dark:text-gray-300 dark:hover:text-amber-400"
+      active ? "text-amber-500" : defaultTextColor
     );
   };
 
   return (
     <>
-      {/* 🌟 ОНОВЛЕНО: Тепер Header завжди має підкладку та ефект розмиття backdrop-blur-md */}
       <header
         className={clsx(
           "fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-between items-center px-4 sm:px-6 md:px-12",
-          "bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-900/50 shadow-xs",
-          // Динамічна висота для красивого візуального переходу при скролі
-          isTop ? "h-20" : "h-16 shadow-lg",
+
+          // Ефекти прозорості та розмиття
+          isTop
+            ? "bg-transparent border-b border-transparent" // Повністю прозорий вгорі
+            : "bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-900/50 shadow-lg", // Блюр при скролі
+
+          isTop ? "h-20" : "h-16",
           scrollDir === "down" && !isOpen
             ? "-translate-y-full"
             : "translate-y-0"
@@ -101,7 +112,7 @@ export default function Header() {
         {/* ПРАВА ЧАСТИНА */}
         <div className="flex items-center space-x-4 lg:space-x-8">
           {/* Десктопна навігація */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6">
             <NavLink to="/" className={getLinkClass("/", "")}>
               Головна
             </NavLink>
@@ -123,14 +134,20 @@ export default function Header() {
               </NavLink>
             )}
           </nav>
+
           <a
             href="tel:+380503411049"
-            className="flex items-center gap-2 px-3.5 py-2 border bg-gray-100/80 border-gray-200 text-gray-900 dark:bg-gray-900/80 dark:border-gray-800 dark:text-white hover:border-amber-500/30 dark:hover:border-amber-400/30 rounded-xl transition-all group cursor-pointer shadow-xs"
+            className={clsx(
+              "flex items-center gap-2 px-3.5 py-2 border rounded-xl transition-all group cursor-pointer shadow-xs",
+              isDarkPage && isTop
+                ? "bg-white/10 border-white/20 text-white hover:border-amber-400/40"
+                : "bg-gray-100/80 border-gray-200 text-gray-900 dark:bg-gray-900/80 dark:border-gray-800 dark:text-white hover:border-amber-500/30 dark:hover:border-amber-400/30"
+            )}
           >
             <div className="w-5 h-5 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
               <PhoneCall size={12} strokeWidth={2.5} />
             </div>
-            <span className="text-xs font-black font-mono tracking-tight shrink-0">
+            <span className="text-sm font-black tracking-tight shrink-0">
               +38 (050) 341 10 49
             </span>
           </a>
@@ -138,16 +155,20 @@ export default function Header() {
           {/* Кнопка кабінету */}
           <NavLink
             to={dashboardPath}
-            className="hidden md:flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-xs font-black uppercase tracking-wider text-gray-900 hover:bg-amber-400 transition-all shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
+            className="hidden lg:flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-xs font-black uppercase tracking-wider text-gray-900 hover:bg-amber-400 transition-all shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
           >
             <User size={14} />
             {buttonLabel}
           </NavLink>
 
-          {/* Бургер-кнопка для мобільних */}
           <button
             onClick={() => setIsOpen(true)}
-            className="md:hidden p-2 rounded-xl transition-colors cursor-pointer text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900"
+            className={clsx(
+              "lg:hidden p-2 rounded-xl transition-colors cursor-pointer",
+              isDarkPage && isTop
+                ? "text-white hover:bg-white/10"
+                : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900"
+            )}
             aria-label="Відкрити меню"
           >
             <Menu size={24} />
@@ -179,14 +200,10 @@ export default function Header() {
           <NavLink
             to="/"
             onClick={closeMenu}
-            className={({ isActive }) =>
-              clsx(
-                "w-full py-1",
-                isLinkActive("/", "")
-                  ? "text-amber-500"
-                  : "hover:text-amber-500"
-              )
-            }
+            className={clsx(
+              "w-full py-1",
+              isLinkActive("/", "") ? "text-amber-500" : "hover:text-amber-500"
+            )}
           >
             Головна
           </NavLink>
@@ -194,12 +211,12 @@ export default function Header() {
           <NavLink
             to="/categories"
             onClick={closeMenu}
-            className={({ isActive }) =>
-              clsx(
-                "w-full py-1",
-                isActive ? "text-amber-500" : "hover:text-amber-500"
-              )
-            }
+            className={clsx(
+              "w-full py-1",
+              isLinkActive("/categories")
+                ? "text-amber-500"
+                : "hover:text-amber-500"
+            )}
           >
             Категорії
           </NavLink>
@@ -207,14 +224,12 @@ export default function Header() {
           <NavLink
             to="/#contact"
             onClick={closeMenu}
-            className={({ isActive }) =>
-              clsx(
-                "w-full py-1",
-                isLinkActive("/", "#contact")
-                  ? "text-amber-500"
-                  : "hover:text-amber-500"
-              )
-            }
+            className={clsx(
+              "w-full py-1",
+              isLinkActive("/", "#contact")
+                ? "text-amber-500"
+                : "hover:text-amber-500"
+            )}
           >
             Контакти
           </NavLink>
@@ -241,7 +256,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Напівпрозорий задній фон для мобільного меню */}
       <div
         className={clsx(
           "fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-300 z-[55] md:hidden",

@@ -135,8 +135,8 @@ export default function Footer() {
             Договір публічної оферти
           </a>
           <p className="mt-2">
-            © {new Date().getFullYear()} Автошкола ЗМСТК ТСО України. Всі права
-            захищені.
+            © {new Date().getFullYear()} Автошкола Знам'янського МСТК ТСО
+            України. Всі права захищені.
           </p>
         </div>
       </div>
