@@ -95,7 +95,7 @@ export default function Hero() {
         <source src={heroVideo} type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-950/70 via-gray-950/40 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-950/30 via-gray-950/10 to-transparent z-10" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-950/20 to-gray-950 z-10 backdrop-blur-[1.5px]" />
 
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

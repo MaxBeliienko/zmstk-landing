@@ -278,7 +278,7 @@ export default function TestRunPage() {
 
               {!isMistakesMode && mode !== "exam" && (
                 <p className="text-[11px] font-medium text-amber-600 dark:text-amber-400 mt-1">
-                  🎯 Для зарахування темы потрібно ≥90% правильних відповідей
+                  🎯 Для зарахування теми потрібно ≥90% правильних відповідей
                 </p>
               )}
             </div>
