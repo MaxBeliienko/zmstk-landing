@@ -11,7 +11,6 @@ export default function EditQuestionModal({ isOpen, onClose, question }) {
   const [explanation, setExplanation] = useState("");
   const [options, setOptions] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   useEffect(() => {
     if (question && isOpen) {
       setTopic(question.topic || "");

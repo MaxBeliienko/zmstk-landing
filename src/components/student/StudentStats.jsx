@@ -153,8 +153,8 @@ export default function StudentStats() {
 
             <div className="flex justify-between font-bold text-gray-500 relative group cursor-help py-0.5 rounded-sm hover:bg-gray-100/50 dark:hover:bg-gray-800/50 px-1 -mx-1 transition-colors">
               <span className="flex items-center gap-1">
-                <AlertTriangle size={13} className="text-red-400" /> Потребують
-                повторення:
+                <AlertTriangle size={13} className="text-red-400" /> Зверни
+                увагу:
               </span>
               <span className="text-gray-900 dark:text-white font-black">
                 {failedCount} тем
@@ -233,7 +233,7 @@ export default function StudentStats() {
       <button
         type="button"
         onClick={() => setIsModalOpen(true)}
-        className="w-full mt-5 py-3 px-4 bg-gray-950 text-white dark:bg-white dark:text-gray-950 font-black rounded-xl text-xs hover:bg-gray-900 dark:hover:bg-gray-100 transition-all text-center cursor-pointer shadow-md transform hover:-translate-y-0.5"
+        className="w-full !mt-5 py-3 px-4 bg-gray-950 text-white dark:bg-white dark:text-gray-950 font-black rounded-xl text-xs hover:bg-gray-900 dark:hover:bg-gray-100 transition-all text-center cursor-pointer shadow-md transform hover:-translate-y-0.5"
       >
         Статистика за темами
       </button>

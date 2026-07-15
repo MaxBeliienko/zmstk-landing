@@ -1,13 +1,61 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GraduationCap, ShieldCheck, Users } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import {
+  GraduationCap,
+  ShieldCheck,
+  Users,
+  Car,
+  Laptop,
+  HeartHandshake,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  const coreValues = [
+    {
+      icon: <GraduationCap size={24} className="text-amber-500" />,
+      title: "Сучасні методики",
+      text: "Поєднуємо класичні стандарти підготовки водіїв з інноваційними методами навчання.",
+    },
+    {
+      icon: <Users size={24} className="text-amber-500" />,
+      title: "Досвідчені інструктори",
+      text: "Майстри виробничого навчання з багаторічним досвідом, які спокійно та зрозуміло пояснюють усі тонкощі водіння.",
+    },
+    {
+      icon: <ShieldCheck size={24} className="text-amber-500" />,
+      title: "Пріоритет безпеки",
+      text: "Навчаємо нове та свідоме покоління водіїв, готових до викликів за кермом.",
+    },
+    {
+      icon: <Car size={24} className="text-amber-500" />,
+      title: "Широкий автопарк",
+      text: "Великий вибір сучасних транспортних засобів: від маневреної мототехніки до різноманітних легкових автомобілів.",
+    },
+    {
+      icon: <Laptop size={24} className="text-amber-500" />,
+      title: "Теорія онлайн / офлайн",
+      text: "Гнучкий формат навчання. Обирайте зручні класи або підключайтеся до інтерактивних занять у режимі онлайн.",
+    },
+    {
+      icon: <HeartHandshake size={24} className="text-amber-500" />,
+      title: "Індивідуальний підхід",
+      text: "Адаптуємо графік водіння та темп навчання под ваші особисті потреби, зайнятість та рівень підготовки.",
+    },
+  ];
 
   useEffect(() => {
     gsap.fromTo(
@@ -24,40 +72,7 @@ export default function About() {
         },
       }
     );
-
-    gsap.fromTo(
-      cardsRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-      }
-    );
   }, []);
-
-  const coreValues = [
-    {
-      icon: <GraduationCap size={24} className="text-amber-500" />,
-      title: "Сучасні методики",
-      text: "Поєднуємо класичні стандарти підготовки ТСО України з інтерактивними ІТ-тренажерами ПДР.",
-    },
-    {
-      icon: <Users size={24} className="text-amber-500" />,
-      title: "Досвідчені інструктори",
-      text: "Наші викладачі — атестовані практики, які вміють знайти індивідуальний підхід до кожного учня.",
-    },
-    {
-      icon: <ShieldCheck size={24} className="text-amber-500" />,
-      title: "Пріоритет безпеки",
-      text: "Вчимо не просто для здачі іспиту в СЦ, а готуємо до реального, безпечного та впевненого життя на дорозі.",
-    },
-  ];
 
   return (
     <section
@@ -65,7 +80,8 @@ export default function About() {
       className="py-24 bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-500 overflow-hidden"
       id="about"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* Заголовок */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <span className="text-xs font-black tracking-widest text-amber-500 dark:text-amber-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full">
             Про автошколу
@@ -77,6 +93,7 @@ export default function About() {
           <div className="w-12 h-1 bg-amber-500 mx-auto rounded-full mt-2" />
         </div>
 
+        {/* Текстовий блок */}
         <div className="max-w-3xl mx-auto text-center text-base sm:text-lg text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
           <p>
             Наша команда навчає не просто кермувати, а готує впевнених і
@@ -88,24 +105,74 @@ export default function About() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-          {coreValues.map((value, idx) => (
-            <div
-              key={idx}
-              ref={(el) => (cardsRef.current[idx] = el)}
-              className="bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700/60 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 space-y-3"
+        {/* Слайдер та навігація */}
+        <div className="flex items-center justify-between gap-2 md:gap-4 pt-6">
+          {/* Маленька та акуратна стрілочка Ліворуч */}
+          <button
+            ref={prevRef}
+            className="p-1.5 rounded-full text-gray-400 hover:text-amber-500 dark:text-gray-500 dark:hover:text-amber-400 transition-all shrink-0 focus:outline-none disabled:opacity-20"
+            aria-label="Попередній слайд"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          {/* Вікно каруселі */}
+          <div className="w-full overflow-hidden px-1">
+            <Swiper
+              modules={[Autoplay, Navigation]}
+              spaceBetween={24}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+              }}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
+              onSwiper={(swiper) => {
+                // Цей хак примусово оновлює прив'язку кнопок після ініціалізації Swiper у DOM
+                setTimeout(() => {
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                  swiper.navigation.destroy();
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                });
+              }}
+              breakpoints={{
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+              className="mySwiper"
             >
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-                {value.icon}
-              </div>
-              <h3 className="text-sm font-black uppercase tracking-tight text-gray-900 dark:text-white">
-                {value.title}
-              </h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
-                {value.text}
-              </p>
-            </div>
-          ))}
+              {coreValues.map((value, idx) => (
+                <SwiperSlide key={idx} className="py-2">
+                  <div className="bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700/60 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 space-y-3 h-full select-none">
+                    <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+                      {value.icon}
+                    </div>
+                    <h3 className="text-sm font-black uppercase tracking-tight text-gray-900 dark:text-white">
+                      {value.title}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                      {value.text}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* Маленька та акуратна стрілочка Праворуч */}
+          <button
+            ref={nextRef}
+            className="p-1.5 rounded-full text-gray-400 hover:text-amber-500 dark:text-gray-500 dark:hover:text-amber-400 transition-all shrink-0 focus:outline-none disabled:opacity-20"
+            aria-label="Наступний слайд"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </section>

@@ -28,7 +28,7 @@ export default function GroupJournalModal({
 
       validThemes.forEach((theme) => {
         const stats = getTopicStats(student, theme.fullName);
-        // Записуємо або "18/20", або "—" якщо не здано
+        // Якщо є статистика (неважливо, складено чи ні) — записуємо бали, інакше "—"
         studentRow.push(stats ? `${stats.correct}/${stats.total}` : "—");
       });
 
@@ -70,7 +70,8 @@ export default function GroupJournalModal({
           <p className="text-xs text-gray-500 dark:text-gray-400 max-w-xl">
             У клітинках відображається співвідношення правильних відповідей до
             загальної кількості питань (наприклад, 18/20). Зелений колір — тему
-            успішно складено. Червоний — тему ще не здано.
+            успішно складено. Червоний з балами — тему пройдено, але не
+            складено. Прочерк (—) — тему ще не розпочато.
           </p>
 
           {/* 🌟 КНОПКА СКАЧУВАННЯ */}
@@ -117,19 +118,32 @@ export default function GroupJournalModal({
 
                   {validThemes.map((theme, index) => {
                     const stats = getTopicStats(student, theme.fullName);
-                    const isPassed = stats !== null;
+
+                    // 🌟 Визначаємо стани
+                    const hasAttempt = stats !== null;
+                    const isPassed = hasAttempt && stats.isPassed;
+
+                    // Підбираємо кольори під світлу/темну тему на основі результату
+                    let cellBgColor =
+                      "bg-red-500/10 text-red-500 dark:bg-red-500/5 dark:text-red-400"; // За замовчуванням (тему ще не проходили — тьмяно-червоний прочерк)
+
+                    if (hasAttempt) {
+                      if (isPassed) {
+                        cellBgColor =
+                          "bg-green-500/20 text-green-700 dark:bg-green-500/10 dark:text-green-400"; // Складено (зелений)
+                      } else {
+                        cellBgColor =
+                          "bg-red-500/25 text-red-600 dark:bg-red-500/20 dark:text-red-400 font-extrabold"; // Спроба була, але не складена (більш насичений червоний)
+                      }
+                    }
 
                     return (
                       <td
                         key={index}
-                        className={`p-1 text-center border-r border-gray-100 dark:border-gray-700/40 font-mono font-bold text-[10px] transition-colors duration-300 ${
-                          isPassed
-                            ? "bg-green-500/20 text-green-700 dark:bg-green-500/10 dark:text-green-400"
-                            : "bg-red-500/10 text-red-500 dark:bg-red-500/5 dark:text-red-400"
-                        }`}
+                        className={`p-1 text-center border-r border-gray-100 dark:border-gray-700/40 font-mono font-bold text-[10px] transition-colors duration-300 ${cellBgColor}`}
                       >
                         <div className="flex items-center justify-center w-full h-full min-h-[24px]">
-                          {isPassed ? `${stats.correct}/${stats.total}` : "—"}
+                          {hasAttempt ? `${stats.correct}/${stats.total}` : "—"}
                         </div>
                       </td>
                     );
