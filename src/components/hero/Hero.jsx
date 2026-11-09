@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
-import { selectUser } from "../../redux/auth/selectors";
 import {
   ShieldCheck,
   Compass,
@@ -13,7 +11,6 @@ import {
 import heroVideo from "../../assets/hero-bg.mp4";
 
 export default function Hero() {
-  const user = useSelector(selectUser);
 
   const videoRef = useRef(null);
   const badgeRef = useRef(null);
@@ -63,21 +60,6 @@ export default function Hero() {
     );
   }, []);
 
-  const getDashboardPath = () => {
-    if (!user) return "/login";
-    switch (user.role) {
-      case "admin":
-        return "/admin-panel";
-      case "teacher":
-        return "/teacher-panel";
-      case "student":
-        return "/dashboard";
-      default:
-        return "/login";
-    }
-  };
-
-  const dashboardPath = getDashboardPath();
 
   return (
     <section

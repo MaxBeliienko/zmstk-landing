@@ -3,37 +3,20 @@ import { useLocation, NavLink } from "react-router-dom";
 import { Menu, X, User, ClipboardCheck, PhoneCall } from "lucide-react";
 import clsx from "clsx";
 import logo from "../../assets/logo.png";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
+import { PDRCHYK_LOGIN } from "../../pdrchyk";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollDir, setScrollDir] = useState("up");
   const [isTop, setIsTop] = useState(true);
 
-  const user = useSelector(selectUser);
   const location = useLocation();
 
   // Визначаємо, чи є поточна сторінка темною спочатку (Головна або Логін)
   const isDarkPage =
-    location.pathname === "/" || location.pathname === "/login";
+    location.pathname === "/";
 
-  const getDashboardPath = () => {
-    if (!user) return "/login";
-    switch (user.role) {
-      case "admin":
-        return "/admin-panel";
-      case "teacher":
-        return "/teacher-panel";
-      case "student":
-        return "/dashboard";
-      default:
-        return "/login";
-    }
-  };
-
-  const dashboardPath = getDashboardPath();
-  const buttonLabel = user ? "Кабінет" : "Увійти";
+  const buttonLabel = "Увійти";
 
   // Керування скролом сторінки при відкритому мобільному меню
   useEffect(() => {
@@ -125,14 +108,12 @@ export default function Header() {
               Контакти
             </NavLink>
 
-            {user && (
-              <NavLink to="/test" className={getLinkClass("/test")}>
-                <span className="flex items-center gap-1.5">
-                  <ClipboardCheck size={16} className="text-amber-500" />
-                  Тестування
-                </span>
-              </NavLink>
-            )}
+            <a href={PDRCHYK_LOGIN} className={getLinkClass("/test")}>
+              <span className="flex items-center gap-1.5">
+                <ClipboardCheck size={16} className="text-amber-500" />
+                Тестування
+              </span>
+            </a>
           </nav>
 
           <a
@@ -153,13 +134,13 @@ export default function Header() {
           </a>
 
           {/* Кнопка кабінету */}
-          <NavLink
-            to={dashboardPath}
+          <a
+            href={PDRCHYK_LOGIN}
             className="hidden lg:flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-xs font-black uppercase tracking-wider text-gray-900 hover:bg-amber-400 transition-all shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
           >
             <User size={14} />
             {buttonLabel}
-          </NavLink>
+          </a>
 
           <button
             onClick={() => setIsOpen(true)}
@@ -234,25 +215,23 @@ export default function Header() {
             Контакти
           </NavLink>
 
-          {user && (
-            <NavLink
-              to="/test"
-              onClick={closeMenu}
-              className="hover:text-amber-500 dark:hover:text-amber-400 transition-colors py-1 w-full flex items-center gap-2 border-t border-gray-100 dark:border-gray-900 pt-4 mt-1"
-            >
-              <ClipboardCheck size={18} className="text-amber-500" />
-              Тестування
-            </NavLink>
-          )}
+          <a
+            href={PDRCHYK_LOGIN}
+            onClick={closeMenu}
+            className="hover:text-amber-500 dark:hover:text-amber-400 transition-colors py-1 w-full flex items-center gap-2 border-t border-gray-100 dark:border-gray-900 pt-4 mt-1"
+          >
+            <ClipboardCheck size={18} className="text-amber-500" />
+            Тестування
+          </a>
 
-          <NavLink
-            to={dashboardPath}
+          <a
+            href={PDRCHYK_LOGIN}
             onClick={closeMenu}
             className="flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-4 py-3 text-xs font-black uppercase tracking-wider text-gray-900 hover:bg-amber-400 transition-all shadow-md w-full mt-6 text-center cursor-pointer shadow-amber-500/10"
           >
             <User size={14} />
             {buttonLabel}
-          </NavLink>
+          </a>
         </div>
       </div>
 
